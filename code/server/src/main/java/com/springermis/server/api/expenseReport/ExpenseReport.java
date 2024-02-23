@@ -1,12 +1,15 @@
 package com.springermis.server.api.expenseReport;
 
 import com.springermis.server.api.employee.Employee;
+import com.springermis.server.api.expense.Expense;
 import com.springermis.server.audit.AuditMetadata;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Getter
@@ -33,5 +36,9 @@ public class ExpenseReport extends AuditMetadata {
     @Enumerated(EnumType.STRING)
     @Column(name = "status", nullable = false)
     private ExpenseReportStatus status = ExpenseReportStatus.DRAFT;
+
+    @OneToMany(mappedBy = "expenseReport")
+    @OrderBy("createdDate DESC")
+    private List<Expense> expenses = new ArrayList<>();
 
 }
