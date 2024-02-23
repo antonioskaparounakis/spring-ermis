@@ -5,9 +5,23 @@ server:
 spring:
   jpa:
     defer-datasource-initialization: true
+    hibernate:
+      ddl-auto: create-drop
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/${POSTGRES_DB}
+    username: ${POSTGRES_USER}
+    password: ${POSTGRES_PASSWORD}
+    driverClassName: org.postgresql.Driver
+
+  sql:
+    init:
+      mode: always
 
 okta:
   oauth2:
     issuer: ${OKTA_OAUTH2_ISSUER}
     audience: ${OKTA_OAUTH2_AUDIENCE}
+
+
 
