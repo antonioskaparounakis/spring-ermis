@@ -13,7 +13,7 @@ public class ExpenseReportSecurityService {
 
     public boolean userOwnsExpenseReport(String userId, UUID expenseReportId) {
         return repository.findById(expenseReportId)
-                .map(expenseReport -> expenseReport.getEmployee().getUserId().equals(userId))
+                .map(expenseReport -> expenseReport.getEmployee().getManager().getUserId().equals(userId))
                 .orElse(false);
     }
 

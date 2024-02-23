@@ -2,6 +2,7 @@ package com.springermis.server.api.expenseReport;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.rest.core.annotation.RestResource;
 import org.springframework.security.access.prepost.PostAuthorize;
 import org.springframework.security.access.prepost.PostFilter;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -11,6 +12,8 @@ import java.util.Optional;
 import java.util.UUID;
 
 public interface ExpenseReportRepository extends CrudRepository<ExpenseReport, UUID> {
+
+    @RestResource(path = "/findByManagerId")
     @Query("select e from ExpenseReport e where e.employee.manager.id = ?1 order by e.createdDate DESC")
     List<ExpenseReport> findByEmployee_Manager_UserIdOrderByCreatedDateDesc(UUID managerId);
 

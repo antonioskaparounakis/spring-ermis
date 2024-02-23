@@ -1,8 +1,8 @@
-spring:
-  data:
-    rest:
-      base-path: ${SPRING_DATA_REST_BASE_PATH}
+server:
+  servlet:
+    context-path: ${SERVER_SERVLET_CONTEXT_PATH}
 
+spring:
   jpa:
     defer-datasource-initialization: true
 
@@ -10,3 +10,4 @@ okta:
   oauth2:
     issuer: ${OKTA_OAUTH2_ISSUER}
     audience: ${OKTA_OAUTH2_AUDIENCE}
+
