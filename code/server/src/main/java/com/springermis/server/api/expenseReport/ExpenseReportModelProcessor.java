@@ -24,7 +24,6 @@ public class ExpenseReportModelProcessor implements RepresentationModelProcessor
                 model.add(linkTo(methodOn(ExpenseReportController.class).rejectById(expenseReport.getId())).withRel("reject"));
             }
         }
-
         return model;
     }
 }
